@@ -25,7 +25,7 @@ ADD templates /src/templates
 
 #Change Postfix port from smtp/25 to >1024 port (1025) for running as standard user
 RUN sed -i "s/^smtp\(\s.*\s*smtpd$\)/1025\1/g" /etc/postfix/master.cf
-RUN groupadd postfix && useradd --no-log-init -g postfix postfix
+#RUN groupadd postfix && useradd --no-log-init -g postfix postfix
 #USER postfix
 
 # Generate config, ask for a TLS certificate to Let's Encrypt, start Postfix and Cron daemon.
