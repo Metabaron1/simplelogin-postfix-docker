@@ -22,4 +22,9 @@ sed -i "s|{TAG_BASE}|$TAG_BASE|g"     multi-arch-manifest.yaml
 
 ./manifest-tool push from-spec multi-arch-manifest.yaml
 
-docker image rmi  $DOCKER_REPO:$TAG_BASE.amd64 $DOCKER_REPO:$TAG_BASE.arm32v5 $DOCKER_REPO:$TAG_BASE.arm32v7 $DOCKER_REPO:$TAG_BASE.arm64v8 $DOCKER_REPO:$TAG_BASE.arm64
+for ARCH in amd64 arm32v5 arm32v7 arm64v8 arm64 ; do
+  IMAGE=$DOCKER_REPO:$TAG_BASE.$ARCH
+  if [ -n "$(docker imgages $IMAGE|grep $IMAGE)" ] ; then
+     docker image rm $IMAGE
+  fi
+done
