@@ -6,6 +6,15 @@
 curl -Lo manifest-tool https://github.com/estesp/manifest-tool/releases/download/v0.9.0/manifest-tool-linux-amd64
 chmod +x manifest-tool
 
+    #https://docs.docker.com/docker-hub/builds/advanced/
+    #SOURCE_BRANCH: the name of the branch or the tag that is currently being tested.
+    #SOURCE_COMMIT: the SHA1 hash of the commit being tested.
+    #COMMIT_MSG: the message from the commit being tested and built.
+    #DOCKER_REPO: the name of the Docker repository being built.
+    #DOCKERFILE_PATH: the dockerfile currently being built.
+    #DOCKER_TAG: the Docker repository tag being built.
+    #IMAGE_NAME: the name and tag of the Docker repository being built. (This variable is a combination of DOCKER_REPO:DOCKER_TAG.)
+
 TAG_BASE= $(echo $DOCKER_TAG | sed -e "s/\.amd64$//g" | sed -e "s/\.arm32v5$//g" | sed -e "s/\.arm32v7$//g" | sed -e "s/\.arm64v8$//g" | sed -e "s/\.arm64$//g"  )
 
 sed -i "s|{IMAGE_NAME}|$IMAGE_NAME|g" multi-arch-manifest.yaml
