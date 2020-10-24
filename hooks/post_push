@@ -29,7 +29,7 @@ echo
 echo TAG_BASE=$TAG_BASE
 echo "####################"
 
-sed -i "s|{IMAGE_NAME}|$IMAGE_NAME|g" multi-arch-manifest.yaml
+sed -i "s|{DOCKER_REPO}|$DOCKER_REPO|g" multi-arch-manifest.yaml
 sed -i "s|{TAG_BASE}|$TAG_BASE|g"     multi-arch-manifest.yaml
 
 cat multi-arch-manifest.yaml
