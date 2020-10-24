@@ -17,7 +17,7 @@ chmod +x manifest-tool
 
 TAG_BASE= $(echo $DOCKER_TAG | sed -e "s/\.amd64$//g" | sed -e "s/\.arm32v5$//g" | sed -e "s/\.arm32v7$//g" | sed -e "s/\.arm64v8$//g" | sed -e "s/\.arm64$//g"  )
 
-sed -i "s|{IMAGE_NAME}|$IMAGE_NAME|g" multi-arch-manifest.yaml
-sed -i "s|{TAG_BASE}|$TAG_BASE|g"     multi-arch-manifest.yaml
+sed -i "s|{IMAGE_NAME}|$IMAGE_NAME|g" ../multi-arch-manifest.yaml
+sed -i "s|{TAG_BASE}|$TAG_BASE|g"     ../multi-arch-manifest.yaml
   
 ./manifest-tool push from-spec multi-arch-manifest.yaml
