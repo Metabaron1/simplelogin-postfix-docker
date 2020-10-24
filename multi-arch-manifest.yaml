@@ -14,7 +14,7 @@ manifests:
 #      architecture: arm
 #      os: linux
 #      variant: v7
-  - image: metabaron/simplelogin-postfix-docker:arm64v8
+  - image: metabaron/simplelogin-postfix-docker:3.1.0-6.arm64v8
     platform:
       architecture: arm64
       os: linux
