@@ -1,20 +1,20 @@
-image: {IMAGE_NAME}:{TAG_BASE}
+image: {DOCKER_REPO}:{TAG_BASE}
 manifests:
-  - image: {IMAGE_NAME}:{TAG_BASE}.amd64
+  - image: {DOCKER_REPO}:{TAG_BASE}.amd64
     platform:
       architecture: amd64
       os: linux
-#  - image: {IMAGE_NAME}:{TAG_BASE}.arm32v5
+#  - image: {DOCKER_REPO}:{TAG_BASE}.arm32v5
 #    platform:
 #      architecture: arm
 #      os: linux
 #      variant: v5
-#  - image: {IMAGE_NAME}:{TAG_BASE}.arm32v7
+#  - image: {DOCKER_REPO}:{TAG_BASE}.arm32v7
 #    platform:
 #      architecture: arm
 #      os: linux
 #      variant: v7
-  - image: {IMAGE_NAME}:{TAG_BASE}.arm64v8
+  - image: {DOCKER_REPO}:{TAG_BASE}.arm64v8
     platform:
       architecture: arm64
       os: linux
