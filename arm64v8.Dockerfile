@@ -1,4 +1,4 @@
-FROM multiarch/qemu-user-static:x86_64-aarch64 as qemu
+FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
 #FROM arm64v8/alpine:3 AS builder
 FROM --platform=linux/arm64 alpine:3 AS builder
 COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin
