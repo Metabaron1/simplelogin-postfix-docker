@@ -6,4 +6,8 @@
 curl -Lo manifest-tool https://github.com/estesp/manifest-tool/releases/download/v0.9.0/manifest-tool-linux-amd64
 chmod +x manifest-tool
 
+#sed -i "s|{image}|$dir|g" ../manifest.yaml
+#  sed -i "s|{tag}|$TAG|g" ../manifest.yaml
+#  sed -i "s|{majmin}|$MAJMIN|g" ../manifest.yaml
+  
 ./manifest-tool push from-spec multi-arch-manifest.yaml
