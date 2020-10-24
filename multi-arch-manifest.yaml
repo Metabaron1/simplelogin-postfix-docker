@@ -1,20 +1,20 @@
-image: metabaron/simplelogin-postfix-docker:latest
+image: metabaron/sl-postfix:latest
 manifests:
-#  - image: metabaron/simplelogin-postfix-docker:amd64
+#  - image: metabaron/sl-postfix:amd64
 #    platform:
 #      architecture: amd64
 #      os: linux
-#  - image: metabaron/simplelogin-postfix-docker:arm32v5
+#  - image: metabaron/sl-postfix:arm32v5
 #    platform:
 #      architecture: arm
 #      os: linux
 #      variant: v5
-#  - image: metabaron/simplelogin-postfix-docker:arm32v7
+#  - image: metabaron/sl-postfix:arm32v7
 #    platform:
 #      architecture: arm
 #      os: linux
 #      variant: v7
-  - image: metabaron/simplelogin-postfix-docker:3.1.0-6.arm64v8
+  - image: metabaron/sl-postfix:3.1.0-6.arm64v8
     platform:
       architecture: arm64
       os: linux
