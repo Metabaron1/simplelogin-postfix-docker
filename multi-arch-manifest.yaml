@@ -1,4 +1,4 @@
-image: metabaron/sl-postfix:latest
+image: metabaron/sl-postfix:3.1.0-6
 manifests:
   - image: metabaron/sl-postfix:3.1.0-6.amd64
     platform:
