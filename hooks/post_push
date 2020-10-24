@@ -17,21 +17,7 @@ chmod +x manifest-tool
 
 TAG_BASE=$(echo $DOCKER_TAG | sed -e "s/\.amd64$//g" | sed -e "s/\.arm32v5$//g" | sed -e "s/\.arm32v7$//g" | sed -e "s/\.arm64v8$//g" | sed -e "s/\.arm64$//g")
 
-echo "####################"
-echo SOURCE_BRANCH=$SOURCE_BRANCH
-echo SOURCE_COMMIT=$SOURCE_COMMIT
-echo COMMIT_MSG=$COMMIT_MSG
-echo DOCKER_REPO=$DOCKER_REPO
-echo DOCKERFILE_PATH=$DOCKERFILE_PATH
-echo DOCKER_TAG=$DOCKER_TAG
-echo IMAGE_NAME=$IMAGE_NAME
-echo
-echo TAG_BASE=$TAG_BASE
-echo "####################"
-
 sed -i "s|{DOCKER_REPO}|$DOCKER_REPO|g" multi-arch-manifest.yaml
 sed -i "s|{TAG_BASE}|$TAG_BASE|g"     multi-arch-manifest.yaml
-
-cat multi-arch-manifest.yaml
 
 ./manifest-tool push from-spec multi-arch-manifest.yaml
