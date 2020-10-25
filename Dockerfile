@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 alpine:3
+FROM --platform=linux/amd64 alpine:3 AS builder
 EXPOSE 25 80
 VOLUME /etc/letsencrypt
 
