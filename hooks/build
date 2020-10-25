@@ -67,7 +67,6 @@ do
         .
 done
 
-docker run --rm --privileged multiarch/qemu-user-static:register --reset
 ## Build the prime image at the end.
 docker build \
     --file "${DOCKERFILE_PATH}" \
