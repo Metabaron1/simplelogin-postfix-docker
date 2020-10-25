@@ -70,7 +70,7 @@ do
   # docker build \
   #     --file "${DOCKERFILE_PATH}.${TARGET_ARCH}" \
     docker build \
-        --file Dockerfile.template \
+        --file Dockerfile.multiarch \
         --build-arg APPLICATION=${APPLICATION} \
         --build-arg BUILD_RFC3339=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
         --build-arg REVISION=$(git rev-parse --short HEAD) \
