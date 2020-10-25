@@ -31,6 +31,18 @@ DESCRIPTION=$(curl -s https://api.github.com/repos/${GITHUB_USERREPO} \
 echo "[---] GITHUB_USERREPO: ${GITHUB_USERREPO}"
 echo "[---] DESCRIPTION: ${DESCRIPTION}"
 
+## Build the prime image at the end.
+docker build \
+    --file "${DOCKERFILE_PATH}" \
+    --build-arg APPLICATION=${APPLICATION} \
+    --build-arg BUILD_RFC3339=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
+    --build-arg REVISION=$(git rev-parse --short HEAD) \
+  	--build-arg PACKAGE="${GITHUB_USERREPO}" \
+    --build-arg DESCRIPTION="${DESCRIPTION}" \
+    --build-arg VERSION=$(git describe --tags --always) \
+    -t ${IMAGE_NAME}_${DEFAULT_ARCH} \
+    .
+
 ## Build all variant images.
 for FILE in ${DOCKERFILE_PATH}.*
 do
