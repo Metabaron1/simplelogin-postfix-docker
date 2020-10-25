@@ -32,37 +32,53 @@ echo "[---] GITHUB_USERREPO: ${GITHUB_USERREPO}"
 echo "[---] DESCRIPTION: ${DESCRIPTION}"
 
 ## Build all variant images.
-for FILE in ${DOCKERFILE_PATH}.*
+#for FILE in ${DOCKERFILE_PATH}.*
+for TARGET_ARCH in amd64 arm64v8
 do
-    TARGET_ARCH=$(echo "${FILE}" | cut -d '.' -f 2)
+#    TARGET_ARCH=$(echo "${FILE}" | cut -d '.' -f 2)
 
     ## FUDGE Factor because Docker Hub does not respect "32" in os/arch model
     case "$TARGET_ARCH" in
+        *amd64)
+            BUILD_ARCH="amd64"
+            QEMU_ARCH="x86_64"
         *arm32v5)
             BUILD_ARCH="armv5"
+            QEMU_ARCH="arm"
             ;;
         *arm32v6)
             BUILD_ARCH="armv6"
+            QEMU_ARCH="arm"
             ;;
         *arm32v7)
             BUILD_ARCH="armv7"
+            QEMU_ARCH="arm"
             ;;
+        *arm64v8)
+            BUILD_ARCH="arm64v8"
+            QEMU_ARCH="aarch64"
         *)
             BUILD_ARCH="${TARGET_ARCH}"
+            echo "[---] Unknown target architecture"
+            exit 0
             ;;
     esac
 
     # Not exactly sure this needs to run EVERY time, but for good measure.
     docker run --rm --privileged multiarch/qemu-user-static:register --reset
 
+  # docker build \
+  #     --file "${DOCKERFILE_PATH}.${TARGET_ARCH}" \
     docker build \
-        --file "${DOCKERFILE_PATH}.${TARGET_ARCH}" \
+        --file Dockerfile.template \
         --build-arg APPLICATION=${APPLICATION} \
         --build-arg BUILD_RFC3339=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
         --build-arg REVISION=$(git rev-parse --short HEAD) \
     	--build-arg PACKAGE="${GITHUB_USERREPO}" \
         --build-arg DESCRIPTION="${DESCRIPTION}" \
         --build-arg VERSION=$(git describe --tags --always) \
+        --build-arg QEMU_ARCH="${QEMU_ARCH}" \
+        --build-arg TARGET_ARCH="${TARGET_ARCH}" \
         -t ${IMAGE_NAME}_${BUILD_ARCH} \
         .
 done
