@@ -1,6 +1,6 @@
 FROM multiarch/qemu-user-static:x86_64-aarch64 AS qemu
 FROM arm32v6/alpine:3 AS builder
-COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin
+COPY --from=qemu /usr/bin/qemu-arm-static /usr/bin
 
 EXPOSE 25 80
 VOLUME /etc/letsencrypt
