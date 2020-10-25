@@ -32,8 +32,8 @@ echo "[---] GITHUB_USERREPO: ${GITHUB_USERREPO}"
 echo "[---] DESCRIPTION: ${DESCRIPTION}"
 
 ## Build all variant images.
-#for FILE in ${DOCKERFILE_PATH}.*
-for TARGET_ARCH in amd64 arm64v8
+for FILE in ${DOCKERFILE_PATH}.*
+#for TARGET_ARCH in amd64 arm64v8
 do
 #    TARGET_ARCH=$(echo "${FILE}" | cut -d '.' -f 2)
 
@@ -74,9 +74,9 @@ do
     docker run --rm --privileged multiarch/qemu-user-static:register --reset
 
   # docker build \
-  #     --file "${DOCKERFILE_PATH}.${TARGET_ARCH}" \
+  #     --file Dockerfile.multiarch \
     docker build \
-        --file Dockerfile.multiarch \
+        --file "${DOCKERFILE_PATH}.${TARGET_ARCH}" \
         --build-arg APPLICATION=${APPLICATION} \
         --build-arg BUILD_RFC3339=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
         --build-arg REVISION=$(git rev-parse --short HEAD) \
