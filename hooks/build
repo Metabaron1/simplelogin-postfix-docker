@@ -57,6 +57,10 @@ do
         *arm64v8)
             BUILD_ARCH="arm64v8"
             QEMU_ARCH="aarch64"
+        *i386)
+            BUILD_ARCH="i386"
+            QEMU_ARCH="i386"
+            ;;
         *)
             BUILD_ARCH="${TARGET_ARCH}"
             echo "[---] Unknown target architecture"
