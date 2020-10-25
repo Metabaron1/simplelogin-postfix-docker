@@ -42,6 +42,7 @@ do
         *amd64)
             BUILD_ARCH="amd64"
             QEMU_ARCH="x86_64"
+            ;;
         *arm32v5)
             BUILD_ARCH="armv5"
             QEMU_ARCH="arm"
