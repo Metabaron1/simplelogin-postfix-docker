@@ -32,14 +32,12 @@ echo "[---] GITHUB_USERREPO: ${GITHUB_USERREPO}"
 echo "[---] DESCRIPTION: ${DESCRIPTION}"
 
 ## Build all variant images.
-
-
-for FILE in ${DOCKERFILE_PATH}.*
-do
-    TARGET_ARCH=$(echo "${FILE}" | cut -d '.' -f 2)
-    
-#for TARGET_ARCH in amd64 arm64v8
+#for FILE in ${DOCKERFILE_PATH}.*
 #do
+#    TARGET_ARCH=$(echo "${FILE}" | cut -d '.' -f 2)
+for TARGET_ARCH in $(cat hooks/TARGET_ARCH.txt)
+do
+
     ## FUDGE Factor because Docker Hub does not respect "32" in os/arch model
     case "$TARGET_ARCH" in
         *amd64)
