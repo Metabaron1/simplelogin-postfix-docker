@@ -74,10 +74,9 @@ do
     # Not exactly sure this needs to run EVERY time, but for good measure.
     docker run --rm --privileged multiarch/qemu-user-static:register --reset
 
-  # docker build \
-  #     --file Dockerfile.multiarch \
     docker build \
-        --file "${DOCKERFILE_PATH}.${TARGET_ARCH}" \
+  #     --file "${DOCKERFILE_PATH}.${TARGET_ARCH}" \
+        --file Dockerfile.multiarch \
         --build-arg APPLICATION=${APPLICATION} \
         --build-arg BUILD_RFC3339=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
         --build-arg REVISION=$(git rev-parse --short HEAD) \
