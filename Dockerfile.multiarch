@@ -1,13 +1,13 @@
 #ARG QEMU_ARCH=x86_64
 #ARG TARGET_ARCH=amd64
 #FROM multiarch/qemu-user-static:x86_64-$QEMU_ARCH AS qemu
-#FROM $TARGET_ARCH/alpine:3 AS builder
+#FROM $TARGET_ARCH/alpine:3
 #ARG QEMU_ARCH=x86_64
 #Copy architecture emulation static binary
 #COPY --from=qemu /usr/bin/qemu-$QEMU_ARCH-static /usr/bin
 
 ARG TARGET_ARCH=amd64
-FROM $TARGET_ARCH/alpine:3 AS builder
+FROM $TARGET_ARCH/alpine:3
 
 ARG QEMU_ARCH=x86_64
 # Copy downloaded architecture emulation static binary
