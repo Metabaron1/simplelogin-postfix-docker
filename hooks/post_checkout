@@ -25,7 +25,7 @@ QEMU_LATEST_TAG=$(curl -s https://api.github.com/repos/multiarch/qemu-user-stati
 #for FILE in ${DOCKERFILE_PATH}.*
 #do
 #    TARGET_ARCH=$(echo "${FILE}" | cut -d '.' -f 2)
-for TARGET_ARCH in $(cat hooks/TARGET_ARCH.txt | grep -v "^#")
+for TARGET_ARCH in $(cat hooks/TARGET_ARCHS.txt | grep -v "^#")
 do
     case "$TARGET_ARCH" in
         *amd64)
