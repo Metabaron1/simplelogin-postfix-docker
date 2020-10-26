@@ -35,7 +35,7 @@ echo "[---] DESCRIPTION: ${DESCRIPTION}"
 #for FILE in ${DOCKERFILE_PATH}.*
 #do
 #    TARGET_ARCH=$(echo "${FILE}" | cut -d '.' -f 2)
-for TARGET_ARCH in $(cat hooks/TARGET_ARCH.txt)
+for TARGET_ARCH in $(cat hooks/TARGET_ARCH.txt | grep -v "^#")
 do
 
     ## FUDGE Factor because Docker Hub does not respect "32" in os/arch model
