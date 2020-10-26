@@ -8,11 +8,9 @@
 
 ARG TARGET_ARCH=amd64
 FROM $TARGET_ARCH/alpine:3
-
 ARG QEMU_ARCH=x86_64
 # Copy downloaded architecture emulation static binary
 COPY qemu-$QEMU_ARCH-static /usr/bin/
-
 
 EXPOSE 25 80
 VOLUME /etc/letsencrypt
