@@ -3,7 +3,7 @@
 # https://docs.docker.com/docker-cloud/builds/advanced/
 # https://semver.org/
 # https://github.com/ckulka/docker-multi-arch-example/
-# From: https://github.com/jnovack/docker-multi-arch-hooks
+# Credits: https://github.com/jnovack/docker-multi-arch-hooks
 
 ## requires to be a os/arch combination
 DEFAULT_ARCH="linux/amd64"
