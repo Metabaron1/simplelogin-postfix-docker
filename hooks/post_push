@@ -36,9 +36,11 @@ function add_tag() {
 
 ## Push all variant images
 ## must be done in post_push
-for FILE in ${DOCKERFILE_PATH}.*
+#for FILE in ${DOCKERFILE_PATH}.*
+#do
+#    TARGET_ARCH=$(echo "${FILE}" | cut -d '.' -f 2)
+for TARGET_ARCH in $(cat hooks/TARGET_ARCH.txt | grep -v "^#")
 do
-    TARGET_ARCH=$(echo "${FILE}" | cut -d '.' -f 2)
 
     echo "[---] TARGET_ARCH: ${TARGET_ARCH}"
 
