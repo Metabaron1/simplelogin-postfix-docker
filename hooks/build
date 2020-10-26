@@ -43,6 +43,8 @@ do
         *amd64)
             BUILD_ARCH="amd64"
             QEMU_ARCH="x86_64"
+            #Skip default default build
+            continue
             ;;
         *arm32v5)
             BUILD_ARCH="armv5"
