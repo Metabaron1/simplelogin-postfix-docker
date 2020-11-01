@@ -11,7 +11,9 @@ RUN apk add --update --no-cache \
     python3 \
     # To generate and renew Postfix TLS certificate:
     certbot \
-    dcron
+    dcron \
+    # To enable Postfix Munin plugin
+    munin-node
 
 # Install Python dependencies.
 RUN python3 -m ensurepip
@@ -22,6 +24,9 @@ ADD generate_config.py /src/
 ADD scripts/certbot-renew-crontab.sh /etc/periodic/hourly/renew-postfix-tls
 ADD scripts/certbot-renew-posthook.sh /etc/letsencrypt/renewal-hooks/post/reload-postfix.sh
 ADD templates /src/templates
+
+RUN ln -s /usr/lib/munin/plugins/postfix_mailqueue /etc/munin/plugins
+ADD configs/munin/munin-node.conf /etc/munin/plugin-conf.d
 
 # Generate config, ask for a TLS certificate to Let's Encrypt, start Postfix and Cron daemon.
 WORKDIR /src
