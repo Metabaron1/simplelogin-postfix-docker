@@ -26,7 +26,7 @@ ADD scripts/certbot-renew-posthook.sh /etc/letsencrypt/renewal-hooks/post/reload
 ADD templates /src/templates
 
 RUN ln -s /usr/lib/munin/plugins/postfix_mailqueue /etc/munin/plugins
-ADD configs/munin/munin-node.conf /etc/munin/plugin-conf.d
+ADD configs/munin-node.conf /etc/munin/plugin-conf.d
 
 # Generate config, ask for a TLS certificate to Let's Encrypt, start Postfix and Cron daemon.
 WORKDIR /src
