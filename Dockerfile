@@ -25,6 +25,7 @@ ADD scripts/certbot-renew-crontab.sh /etc/periodic/hourly/renew-postfix-tls
 ADD scripts/certbot-renew-posthook.sh /etc/letsencrypt/renewal-hooks/post/reload-postfix.sh
 ADD templates /src/templates
 
+#Copy munin config
 RUN ln -s /usr/lib/munin/plugins/postfix_mailqueue /etc/munin/plugins
 ADD configs/munin-node.conf /etc/munin/plugin-conf.d
 
