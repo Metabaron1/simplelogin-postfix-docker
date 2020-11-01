@@ -23,7 +23,9 @@ RUN apk add --update --no-cache \
     python3 \
     # To generate and renew Postfix TLS certificate:
     certbot \
-    dcron
+    dcron \
+    # To enable Postfix Munin plugin
+    munin-node
 
 # Install Python dependencies.
 RUN python3 -m ensurepip
