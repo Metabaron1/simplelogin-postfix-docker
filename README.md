@@ -38,4 +38,3 @@ docker logs -f <POSTFIX_CONTAINER>
 If Postfix doesn't seem to use TLS, have a look to Certbot logs:
 ```sh
 docker exec -ti <POSTFIX_CONTAINER> cat /var/log/letsencrypt/letsencrypt.log
-```
