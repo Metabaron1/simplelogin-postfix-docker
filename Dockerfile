@@ -23,7 +23,7 @@ ADD scripts/certbot-renew-crontab.sh /etc/periodic/hourly/renew-postfix-tls
 ADD scripts/certbot-renew-posthook.sh /etc/letsencrypt/renewal-hooks/post/reload-postfix.sh
 ADD templates /src/templates
 
-# Init postfix alias DB
+# Init Postfix alias DB
 RUN /usr/bin/newaliases
 
 # Generate config, ask for a TLS certificate to Let's Encrypt, start Postfix and Cron daemon.
