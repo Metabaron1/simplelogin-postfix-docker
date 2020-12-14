@@ -29,7 +29,7 @@ RUN /usr/bin/newaliases
 
 # Generate config, ask for a TLS certificate to Let's Encrypt, start Postfix and Cron daemon.
 WORKDIR /src
-CMD ./generate_config.py --certbot && /etc/periodic/hourly/renew-postfix-tls; crond && ./generate_config.py --postfix && postfix start-fg
+CMD ./generate_config.py --certbot && /etc/periodic/hourly/renew-postfix-tls;  if [ -f /etc/iptables/iptables.sh ] ; then /etc/iptables/iptables.sh ; fi ; crond && ./generate_config.py --postfix && postfix start-fg
 
 # Idea taken from https://github.com/Mailu/Mailu/blob/master/core/postfix/Dockerfile
 HEALTHCHECK --start-period=350s CMD echo QUIT|nc localhost 25|grep "220 .* ESMTP Postfix"
