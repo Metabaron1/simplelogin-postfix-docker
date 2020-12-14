@@ -25,7 +25,7 @@ ADD scripts/certbot-renew-posthook.sh /etc/letsencrypt/renewal-hooks/post/reload
 ADD templates /src/templates
 
 # Init Postfix alias DB
-# RUN /usr/bin/newaliases
+RUN /usr/bin/newaliases
 
 # Generate config, ask for a TLS certificate to Let's Encrypt, start Postfix and Cron daemon.
 WORKDIR /src
